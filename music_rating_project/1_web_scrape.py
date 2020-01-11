@@ -75,9 +75,12 @@ def get_lyrics(song_title, artist_name, genius_token_string):
 
 def save_lyrics(df, genius_token_string):
 	'''
-	this function accepts a pandas dataframe (apple music library playist) as an argument, and gets the lyrics. every 1000 songs, it saves a json file as a backup in case of crash.
+	this function accepts a pandas dataframe (apple music library playist) as an argument, and gets the lyrics.
+    every 1000 songs, it saves a json file as a backup in case of crash.
 
-	there's probably a better of doing this (splitting the dataframe into parts and parallellizing, but since the initial scrape is the hardest, might not be necessary for subsequent thing)
+	there's probably a better of doing this
+    (splitting the dataframe into parts and parallellizing, 
+    but since the initial scrape is the hardest, might not be necessary for subsequent thing)
 	'''
     
     print('scraping some lyrics...')
@@ -149,8 +152,7 @@ def save_lyrics(df, genius_token_string):
 
 if __name__ == 'main':
 	parser = argparse.ArgumentParser()
-	parser.add_argument('playlist_filepath', type = str, help = 'filepath of the apple music file')
-	# parser.add_argument('genius_access_token', type = str, help = 'genius site credential')
+	parser.add_argument('playlist_filepath', type = str, help = 'filepath of the apple music file') # input a filepath of a file (maybe update this to grab file from s3?)
 	args = parser.parse_args()
 
 	json_file = json.load(open('cred.json'))
